@@ -210,20 +210,20 @@ body {
 
 /* Walking animations */
 @keyframes cute-cat-walk-1 {
-  0%, 100% { transform: rotate(-15deg); }
-  50% { transform: rotate(5deg); }
+  0%, 100% { rotate: -15deg; }
+  50% { rotate: 5deg; }
 }
 @keyframes cute-cat-walk-2 {
-  0%, 100% { transform: rotate(8deg); }
-  50% { transform: rotate(-12deg); }
+  0%, 100% { rotate: 8deg; }
+  50% { rotate: -12deg; }
 }
 @keyframes cute-cat-tail {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(-10deg); }
+  0%, 100% { rotate: 0deg; }
+  50% { rotate: -10deg; }
 }
 @keyframes cute-cat-head-bob {
-  0%, 100% { transform: translate(-50%, 0%); }
-  50% { transform: translate(-50%, 3%); }
+  0%, 100% { translate: -50% 0%; }
+  50% { translate: -50% 3%; }
 }
 
 .cute-cat .body .paw:nth-child(3) {
