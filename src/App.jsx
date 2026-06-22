@@ -556,6 +556,42 @@ function App() {
             />
           </motion.div>
         </div>
+
+        {/* Walking Black Cat */}
+        <motion.div
+          initial={{ x: '-10%', scaleX: -1 }}
+          animate={{
+            x: ['-10%', '110%', '110%', '-10%', '-10%'],
+            scaleX: [-1, -1, 1, 1, -1]
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear",
+            times: [0, 0.47, 0.5, 0.97, 1]
+          }}
+          className="absolute bottom-1.5 z-40 pointer-events-none"
+        >
+          <svg viewBox="0 0 48 30" className="w-12 h-8 text-slate-800 fill-current drop-shadow-sm">
+            {/* Tail */}
+            <path d="M42,12 C45,6 43,2 41,2 C39,2 39,6 41,10 L38,13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" fill="none" className="cat-tail" />
+            {/* Body */}
+            <rect x="14" y="10" width="24" height="12" rx="6" fill="currentColor" />
+            {/* Head */}
+            <circle cx="12" cy="10" r="6" fill="currentColor" />
+            {/* Ears */}
+            <polygon points="7,5 11,8 8,11" fill="currentColor" />
+            <polygon points="13,5 13,9 17,8" fill="currentColor" />
+            {/* Eyes */}
+            <circle cx="10" cy="9" r="1.1" fill="#F4B41A" />
+            <circle cx="13" cy="9" r="1.1" fill="#F4B41A" />
+            {/* Legs */}
+            <line x1="16" y1="21" x2="14" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="cat-leg-1" />
+            <line x1="20" y1="21" x2="22" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="cat-leg-2" />
+            <line x1="30" y1="21" x2="28" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="cat-leg-3" />
+            <line x1="34" y1="21" x2="36" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="cat-leg-4" />
+          </svg>
+        </motion.div>
       </motion.div>
     </div>
   )

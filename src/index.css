@@ -16,3 +16,37 @@ body {
   color: #1e293b;
   overflow-x: hidden;
 }
+
+/* Cat animations */
+@keyframes cat-walk-cycle-1 {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(12deg); }
+}
+@keyframes cat-walk-cycle-2 {
+  0%, 100% { transform: rotate(12deg); }
+  50% { transform: rotate(-12deg); }
+}
+@keyframes cat-tail-wag {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+
+.cat-leg-1, .cat-leg-3 {
+  transform-origin: 16px 21px;
+  animation: cat-walk-cycle-1 0.4s infinite ease-in-out;
+}
+.cat-leg-2, .cat-leg-4 {
+  transform-origin: 20px 21px;
+  animation: cat-walk-cycle-2 0.4s infinite ease-in-out;
+}
+.cat-leg-3 {
+  transform-origin: 30px 21px;
+}
+.cat-leg-4 {
+  transform-origin: 34px 21px;
+}
+
+.cat-tail {
+  transform-origin: 38px 13px;
+  animation: cat-tail-wag 0.8s infinite ease-in-out;
+}
