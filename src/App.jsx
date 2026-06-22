@@ -152,7 +152,7 @@ function App() {
             onClick={() => changeTab('home')}
             className="text-slate-900 font-cursive text-3xl sm:text-4xl md:text-5xl hover:opacity-80 transition-opacity cursor-pointer whitespace-nowrap flex-shrink-0 pt-2"
           >
-        
+         
           </button>
 
           {/* Nav Links */}
@@ -559,8 +559,16 @@ function App() {
         {/* Decorative Black Cat (Static in corner) */}
         <div
           style={{ transform: 'scaleX(-1)' }}
-          className="absolute bottom-2 left-6 z-40 pointer-events-none"
+          className="absolute bottom-2 left-6 z-40 group cursor-pointer"
         >
+          {/* Speech Bubble */}
+          <div 
+            style={{ transform: 'scaleX(-1)' }}
+            className="absolute bottom-[65px] left-1/2 -translate-x-[30%] mb-2 bg-slate-950 text-white text-[10px] font-bold px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-300 pointer-events-none whitespace-nowrap shadow-md z-50"
+          >
+            Meow~ 🐾
+            <div className="absolute top-full left-[25%] -translate-x-1/2 border-4 border-transparent border-t-slate-950"></div>
+          </div>
           <article className="cute-cat" role="img" aria-labelledby="alt">
             <div id="alt">Cartoon of a black cat drawn in cute/kawaii style</div>
             <div className="shadow"></div>
