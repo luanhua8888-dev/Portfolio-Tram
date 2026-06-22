@@ -40,131 +40,45 @@ const FallingFlowers = () => {
   const [flowers, setFlowers] = React.useState([])
 
   React.useEffect(() => {
-    // Generate 30 random flowers with different sizes, types, positions, durations, delays
-    const initialFlowers = Array.from({ length: 40 }).map((_, i) => ({
+    // Generate 35 random flowers/images with different sizes, positions, durations, delays
+    const initialFlowers = Array.from({ length: 35 }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
-      size: Math.random() * 18 + 12, // 12px to 30px
+      size: Math.random() * 20 + 20, // 20px to 40px (since PNGs look better slightly larger)
       delay: Math.random() * -15, // Starts immediately distributed
       duration: Math.random() * 8 + 6, // 6s to 14s
-      type: i % 6 === 0 ? 'frog' : (i % 6 === 1 ? 'cat' : (i % 6 === 2 ? 'daisy' : (i % 6 === 3 ? 'petal' : 'sakura'))),
+      type: i % 3 === 0 ? 'daisy' : (i % 3 === 1 ? 'cat' : 'frog'),
       swayDuration: Math.random() * 3 + 2, // 2s to 5s
     }))
     setFlowers(initialFlowers)
   }, [])
 
   const renderShape = (type) => {
-    if (type === 'cat') {
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.12)]">
-          {/* Ears */}
-          <path d="M 22,35 L 12,20 L 32,25 Z" fill="#FDF2DB" />
-          <path d="M 22,35 L 14,22 L 28,26 Z" fill="#F3D1C9" />
-          
-          <path d="M 78,35 L 88,20 L 68,25 Z" fill="#FDF2DB" />
-          <path d="M 78,35 L 86,22 L 72,26 Z" fill="#F3D1C9" />
-          
-          {/* Cat Head Base */}
-          <ellipse cx="50" cy="50" rx="36" ry="28" fill="#FDF2DB" />
-          
-          {/* Closed/Squinting Eyes */}
-          <path d="M 25,41 Q 31,37 37,42" stroke="#5C4033" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-          <path d="M 63,41 Q 69,37 75,42" stroke="#5C4033" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-          
-          {/* Yawning Mouth */}
-          <path d="M 44,45 C 40,55, 42,72, 50,72 C 58,72, 60,55, 56,45 Z" fill="#3D1D13" />
-          
-          {/* Pink Tongue */}
-          <path d="M 46,62 C 46,70, 54,70, 54,62 C 54,58, 46,58, 46,62 Z" fill="#F3A3A3" />
-          
-          {/* Nose */}
-          <polygon points="48,43 52,43 50,45" fill="#F3A3A3" />
-          
-          {/* Whiskers */}
-          <path d="M 22,50 L 10,49" stroke="#E5D3B3" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M 22,55 L 8,56" stroke="#E5D3B3" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M 78,50 L 90,49" stroke="#E5D3B3" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M 78,55 L 92,56" stroke="#E5D3B3" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
-      )
-    }
-    if (type === 'frog') {
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.12)]">
-          {/* Frog Head Green Base */}
-          <path 
-            d="M 15,55 
-               C 10,40, 25,25, 40,32 
-               C 45,28, 55,28, 60,32 
-               C 75,25, 90,40, 85,55 
-               C 80,78, 20,78, 15,55 Z" 
-            fill="#8FBE77" 
-          />
-          {/* Pink Blushing Cheeks */}
-          <ellipse cx="24" cy="50" rx="7" ry="3" fill="#F4A2A2" opacity="0.85" />
-          <ellipse cx="76" cy="50" rx="7" ry="3" fill="#F4A2A2" opacity="0.85" />
-          
-          {/* Eyes */}
-          <circle cx="35" cy="40" r="4.5" fill="#111111" />
-          <circle cx="36.5" cy="38.5" r="1.5" fill="#FFFFFF" />
-          <circle cx="65" cy="40" r="4.5" fill="#111111" />
-          <circle cx="66.5" cy="38.5" r="1.5" fill="#FFFFFF" />
-          
-          {/* Nostrils */}
-          <circle cx="47" cy="44" r="1" fill="#222" />
-          <circle cx="53" cy="44" r="1" fill="#222" />
-          
-          {/* Mouth */}
-          <path 
-            d="M 36,52 C 45,56 55,56 64,52" 
-            stroke="#222" 
-            strokeWidth="2.5" 
-            strokeLinecap="round" 
-            fill="none" 
-          />
-        </svg>
-      )
-    }
     if (type === 'daisy') {
       return (
-        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
-          <g fill="#FFFFFF">
-            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(0 50 50)" />
-            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(30 50 50)" />
-            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(60 50 50)" />
-            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(90 50 50)" />
-            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(120 50 50)" />
-            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(150 50 50)" />
-            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(180 50 50)" />
-            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(210 50 50)" />
-            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(240 50 50)" />
-            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(270 50 50)" />
-            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(300 50 50)" />
-            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(330 50 50)" />
-          </g>
-          <circle cx="50" cy="50" r="15" fill="#F4B41A" />
-        </svg>
+        <img 
+          src="/image-removebg-preview.png" 
+          alt="Daisy" 
+          className="w-full h-full object-contain pointer-events-none" 
+        />
       )
     }
-    if (type === 'petal') {
+    if (type === 'cat') {
       return (
-        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_1px_2px_rgba(0,0,0,0.1)]">
-          <path d="M50,15 C65,30 65,65 50,85 C35,65 35,30 50,15 Z" fill="#FFFFFF" opacity="0.95" />
-        </svg>
+        <img 
+          src="/image-removebg-preview (1).png" 
+          alt="Cat" 
+          className="w-full h-full object-contain pointer-events-none" 
+        />
       )
     }
-    // Sakura (pink cherry blossom)
+    // frog
     return (
-      <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
-        <g fill="#FBCFE8">
-          <circle cx="50" cy="32" r="14" />
-          <circle cx="68" cy="45" r="14" />
-          <circle cx="61" cy="68" r="14" />
-          <circle cx="39" cy="68" r="14" />
-          <circle cx="32" cy="45" r="14" />
-        </g>
-        <circle cx="50" cy="50" r="10" fill="#FDE047" />
-      </svg>
+      <img 
+        src="/image-removebg-preview (2).png" 
+        alt="Frog" 
+        className="w-full h-full object-contain pointer-events-none" 
+      />
     )
   }
 
@@ -424,24 +338,7 @@ function App() {
                         Trong những năm qua, mình đã làm việc cùng các đối tác và thương hiệu để thiết kế ứng dụng di động, trang web và các sản phẩm tương tác. Mình tin rằng một thiết kế tuyệt vời không chỉ nằm ở vẻ bề ngoài mà còn ở cách nó vận hành.
                       </p>
                     </div>
-                    
-                    <div className="pt-2">
-                      <h3 className="text-slate-800 font-bold text-sm md:text-base mb-3 font-sans">Kỹ năng chính:</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {['UI/UX Design', 'Framer Motion', 'Figma', 'React', 'Tailwind CSS', 'Prototyping', 'User Research'].map((skill, i) => (
-                          <motion.span
-                            key={skill}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.05 }}
-                            whileHover={{ scale: 1.05, backgroundColor: '#FEF08A' }}
-                            className="bg-brand-yellow/10 text-slate-800 border border-brand-yellow/30 px-3 py-1.5 rounded-lg text-xs md:text-sm font-semibold transition-colors cursor-default"
-                          >
-                            {skill}
-                          </motion.span>
-                        ))}
-                      </div>
-                    </div>
+
                   </>
                 )}
 
