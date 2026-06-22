@@ -123,7 +123,7 @@ function App() {
                     isActive ? 'text-slate-900' : 'text-slate-700/80 hover:text-slate-900'
                   }`}
                 >
-                  {tab}
+                  {tab === 'projects' ? 'Socials' : tab}
                   {isActive && (
                     <motion.div 
                       layoutId="activeUnderline"
@@ -168,7 +168,7 @@ function App() {
                         onClick={() => changeTab('projects')}
                         className="bg-brand-yellow hover:bg-brand-yellow-hover text-slate-950 font-bold px-6 py-3 rounded-xl shadow-[0_4px_14px_rgba(244,180,26,0.3)] transition-colors flex items-center gap-2 cursor-pointer text-sm md:text-base"
                       >
-                        Projects
+                        Socials
                         <ArrowRight size={18} />
                       </motion.button>
                       <motion.a
@@ -237,25 +237,39 @@ function App() {
                 {activeTab === 'projects' && (
                   <>
                     <span className="text-brand-yellow font-bold tracking-wider text-xs md:text-sm uppercase block font-sans">
-                      Selected Work
+                      Social Channels
                     </span>
                     <h1 className="text-slate-950 font-serif text-4xl md:text-5xl font-bold leading-tight">
-                      Recent Projects
+                      My Networks
                     </h1>
                     
                     <div className="space-y-3 pt-2">
                       {[
-                        { title: 'Amélie Garden', category: 'Mobile App Design', desc: 'Plant care companion with water schedules and community.' },
-                        { title: 'Solaria Dashboard', category: 'SaaS Web App', desc: 'Visual Analytics for household solar panel energy yields.' },
-                        { title: 'Zenith Storefront', category: 'Brand & E-Commerce', desc: 'Sleek luxury storefront experience for sustainable fashion.' }
+                        { 
+                          title: 'Facebook Profile', 
+                          category: 'Facebook', 
+                          desc: 'Connect with me on Facebook to see my daily life and updates.',
+                          link: 'https://www.facebook.com/bich.tram.388670',
+                          icon: 'facebook'
+                        },
+                        { 
+                          title: 'Instagram Profile', 
+                          category: 'Instagram', 
+                          desc: 'Follow my photography, stories, and visual design inspirations.',
+                          link: 'https://www.instagram.com/chuttoii/?hl=en',
+                          icon: 'instagram'
+                        }
                       ].map((project, i) => (
-                        <motion.div
+                        <motion.a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           key={project.title}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: i * 0.1 }}
                           whileHover={{ x: 6 }}
-                          className="group flex flex-col justify-start p-3 rounded-xl border border-transparent hover:border-slate-100 hover:bg-white hover:shadow-sm transition-all duration-300"
+                          className="group flex flex-col justify-start p-3 rounded-xl border border-transparent hover:border-slate-100 hover:bg-white hover:shadow-sm transition-all duration-300 cursor-pointer block"
                         >
                           <div className="flex justify-between items-center">
                             <div>
@@ -266,11 +280,15 @@ function App() {
                               whileHover={{ scale: 1.2 }}
                               className="text-slate-400 group-hover:text-slate-900 transition-colors p-1"
                             >
-                              <ExternalLink size={18} />
+                              {project.icon === 'facebook' ? (
+                                <Facebook size={18} />
+                              ) : (
+                                <Instagram size={18} />
+                              )}
                             </motion.div>
                           </div>
                           <p className="text-slate-500 text-xs md:text-sm mt-1 leading-snug">{project.desc}</p>
-                        </motion.div>
+                        </motion.a>
                       ))}
                     </div>
                   </>
