@@ -1,12 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, Facebook, Instagram, Mail, Send, CheckCircle2, ExternalLink } from 'lucide-react'
+import { ArrowRight, Facebook, Instagram, Mail, Send, CheckCircle2, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
 import heroAvatar from './assets/hero_avatar.png'
+import slide1 from './assets/slide1.png'
+import slide2 from './assets/slide2.png'
+import slide3 from './assets/slide3.png'
+import slide4 from './assets/slide4.png'
 
 function App() {
   const [activeTab, setActiveTab] = useState('home')
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const slides = [slide1, slide2, slide3, slide4]
+
+  useEffect(() => {
+    let timer
+    if (activeTab === 'contacts') {
+      timer = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length)
+      }, 4000)
+    }
+    return () => clearInterval(timer)
+  }, [activeTab, slides.length])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -360,6 +377,58 @@ function App() {
                         </motion.button>
                       </form>
                     )}
+
+                    {/* Slideshow Gallery */}
+                    <div className="relative mt-5 rounded-2xl overflow-hidden aspect-[16/10] shadow-sm border border-slate-100/50 group h-40 sm:h-48">
+                      <AnimatePresence mode="wait">
+                        <motion.img
+                          key={currentSlide}
+                          src={slides[currentSlide]}
+                          initial={{ opacity: 0, scale: 1.03 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.97 }}
+                          transition={{ duration: 0.5, ease: "easeInOut" }}
+                          className="w-full h-full object-cover"
+                          draggable="false"
+                        />
+                      </AnimatePresence>
+                      
+                      {/* Left/Right Controls */}
+                      <button 
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+                        }}
+                        className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-1.5 rounded-full shadow-sm hover:scale-105 transition-all opacity-0 group-hover:opacity-100 cursor-pointer flex items-center justify-center z-10"
+                      >
+                        <ChevronLeft size={16} />
+                      </button>
+                      <button 
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setCurrentSlide((prev) => (prev + 1) % slides.length)
+                        }}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-1.5 rounded-full shadow-sm hover:scale-105 transition-all opacity-0 group-hover:opacity-100 cursor-pointer flex items-center justify-center z-10"
+                      >
+                        <ChevronRight size={16} />
+                      </button>
+                      
+                      {/* Slide Indicator Dots */}
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10 bg-slate-950/20 backdrop-blur-sm px-2.5 py-1 rounded-full">
+                        {slides.map((_, idx) => (
+                          <button
+                            type="button"
+                            key={idx}
+                            onClick={() => setCurrentSlide(idx)}
+                            className={`w-1.5 h-1.5 rounded-full transition-all cursor-pointer ${
+                              currentSlide === idx ? 'bg-brand-yellow w-3' : 'bg-white/60 hover:bg-white'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
                   </>
                 )}
               </motion.div>
