@@ -202,7 +202,6 @@ function App() {
                 {activeTab === 'home' && (
                   <>
                     <span className="text-brand-yellow font-bold tracking-wider text-xs md:text-sm uppercase block font-sans">
-                      UI/UX Designer
                     </span>
                     <h1 className="text-slate-950 font-serif text-4xl md:text-6xl font-bold leading-[1.1] md:leading-[1.15]">
                       Xin chào, mình là Bích Trâm
@@ -574,33 +573,42 @@ function App() {
         >
           <svg viewBox="0 0 48 30" className="w-20 h-14 text-slate-800 fill-current drop-shadow-md">
             {/* Tail */}
-            <path d="M34,14 C38,7 37,2 35,2 C33,2 33,6 35,9 L33,14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" fill="none" className="cat-tail" />
+            <path d="M33,14.5 C37,8 36,3 34,3 C32,3 32,7 34,10 L32,14.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" fill="none" className="cat-tail" />
             {/* Body */}
-            <rect x="18" y="12" width="18" height="11" rx="5.5" fill="currentColor" />
+            <rect x="18" y="12.5" width="17" height="10" rx="5" fill="currentColor" />
             {/* Head */}
-            <ellipse cx="14" cy="11" rx="8" ry="7" fill="currentColor" />
+            <ellipse cx="15" cy="11.5" rx="8.5" ry="7.5" fill="currentColor" />
             {/* Ears */}
             <polygon points="7,5 11,2 11,8" fill="currentColor" />
-            <polygon points="17,2 21,5 17,8" fill="currentColor" />
-            {/* Eyes (Cute anime-style yellow/green glowing eyes) */}
-            <ellipse cx="11" cy="10" rx="1.5" ry="2" fill="#F4B41A" />
-            <ellipse cx="17" cy="10" rx="1.5" ry="2" fill="#F4B41A" />
-            <ellipse cx="11.2" cy="10" rx="0.5" ry="1.2" fill="#0F172A" />
-            <ellipse cx="17.2" cy="10" rx="0.5" ry="1.2" fill="#0F172A" />
+            <polygon points="8,5.2 10.5,3.2 10.5,7.2" fill="#FDA4AF" />
+            <polygon points="19,2 23,5 19,8" fill="currentColor" />
+            <polygon points="19.5,3.2 22,5.2 19.5,7.2" fill="#FDA4AF" />
+            {/* Eyes (Cute anime-style yellow/green glowing eyes with reflection highlights) */}
+            <circle cx="11.5" cy="10" r="2.2" fill="#0F172A" />
+            <circle cx="12.3" cy="9.2" r="0.7" fill="white" />
+            <circle cx="10.9" cy="10.8" r="0.3" fill="white" />
+            <circle cx="18.5" cy="10" r="2.2" fill="#0F172A" />
+            <circle cx="19.3" cy="9.2" r="0.7" fill="white" />
+            <circle cx="17.9" cy="10.8" r="0.3" fill="white" />
             {/* Whiskers */}
-            <line x1="7" y1="12" x2="3" y2="11.5" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.8" />
-            <line x1="7" y1="13.5" x2="2.5" y2="13.5" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.8" />
-            <line x1="7" y1="15" x2="3.5" y2="15.5" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.8" />
-            <line x1="21" y1="12" x2="25" y2="11.5" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.8" />
-            <line x1="21" y1="13.5" x2="25.5" y2="13.5" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.8" />
-            <line x1="21" y1="15" x2="24.5" y2="15.5" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.8" />
+            <line x1="7" y1="12" x2="3.5" y2="11.5" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.8" />
+            <line x1="7" y1="13.5" x2="3" y2="13.5" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.8" />
+            <line x1="7" y1="15" x2="4" y2="15.5" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.8" />
+            <line x1="23" y1="12" x2="26.5" y2="11.5" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.8" />
+            <line x1="23" y1="13.5" x2="27" y2="13.5" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.8" />
+            <line x1="23" y1="15" x2="26" y2="15.5" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.8" />
+            {/* Cute Cat Smile Mouth */}
+            <path d="M14,13 Q14.7,14 15,13 Q15.3,14 16,13" stroke="#0F172A" strokeWidth="0.8" strokeLinecap="round" fill="none" />
+            {/* Cute Blushing Cheeks */}
+            <ellipse cx="8.5" cy="12.5" rx="1.8" ry="1" fill="#FDA4AF" opacity="0.7" />
+            <ellipse cx="21.5" cy="12.5" rx="1.8" ry="1" fill="#FDA4AF" opacity="0.7" />
             {/* Tiny Pink Nose */}
-            <polygon points="13.5,12.5 14.5,12.5 14,13.2" fill="#FDA4AF" />
+            <polygon points="14.5,12 15.5,12 15,12.5" fill="#FDA4AF" />
             {/* Legs */}
-            <line x1="20" y1="21" x2="19" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="cat-leg-1" />
-            <line x1="23" y1="21" x2="24" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="cat-leg-2" />
-            <line x1="29" y1="21" x2="28" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="cat-leg-3" />
-            <line x1="32" y1="21" x2="33" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="cat-leg-4" />
+            <line x1="20" y1="21" x2="19" y2="28" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" className="cat-leg-1" />
+            <line x1="23" y1="21" x2="24" y2="28" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" className="cat-leg-2" />
+            <line x1="29" y1="21" x2="28" y2="28" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" className="cat-leg-3" />
+            <line x1="32" y1="21" x2="33" y2="28" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" className="cat-leg-4" />
           </svg>
         </motion.div>
       </motion.div>
