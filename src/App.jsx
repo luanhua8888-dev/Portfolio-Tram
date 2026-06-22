@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, Linkedin, Github, Mail, Send, CheckCircle2, ExternalLink } from 'lucide-react'
+import { ArrowRight, Facebook, Instagram, Mail, Send, CheckCircle2, ExternalLink } from 'lucide-react'
 import heroAvatar from './assets/hero_avatar.png'
 
 function App() {
@@ -161,7 +161,7 @@ function App() {
                     <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-md">
                       Short text with details about you, what you do or your professional career. You can add more information on the about page.
                     </p>
-                    <div className="flex flex-wrap gap-4 pt-2">
+                    <div className="flex flex-wrap gap-3 pt-2">
                       <motion.button
                         whileHover={{ scale: 1.03, y: -2 }}
                         whileTap={{ scale: 0.98 }}
@@ -174,13 +174,24 @@ function App() {
                       <motion.a
                         whileHover={{ scale: 1.03, y: -2 }}
                         whileTap={{ scale: 0.98 }}
-                        href="https://www.linkedin.com/feed/"
+                        href="https://www.facebook.com/bich.tram.388670"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="border-2 border-slate-900 hover:bg-slate-900 hover:text-white text-slate-950 font-bold px-6 py-3 rounded-xl transition-all flex items-center gap-2 text-sm md:text-base"
+                        className="border-2 border-slate-900 hover:bg-slate-900 hover:text-white text-slate-950 font-bold px-5 py-3 rounded-xl transition-all flex items-center gap-2 text-sm md:text-base"
                       >
-                        LinkedIn
-                        <Linkedin size={18} />
+                        Facebook
+                        <Facebook size={18} />
+                      </motion.a>
+                      <motion.a
+                        whileHover={{ scale: 1.03, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                        href="https://www.instagram.com/chuttoii/?hl=en"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="border-2 border-slate-900 hover:bg-slate-900 hover:text-white text-slate-950 font-bold px-5 py-3 rounded-xl transition-all flex items-center gap-2 text-sm md:text-base"
+                      >
+                        Instagram
+                        <Instagram size={18} />
                       </motion.a>
                     </div>
                   </>
