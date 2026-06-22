@@ -150,9 +150,9 @@ function App() {
           {/* Logo / Name */}
           <button 
             onClick={() => changeTab('home')}
-            className="text-slate-900 font-bold text-base sm:text-xl md:text-2xl hover:opacity-80 transition-opacity cursor-pointer font-sans whitespace-nowrap flex-shrink-0"
+            className="text-slate-900 font-cursive text-3xl sm:text-4xl md:text-5xl hover:opacity-80 transition-opacity cursor-pointer whitespace-nowrap flex-shrink-0 pt-2"
           >
-            Bích Trâm
+        
           </button>
 
           {/* Nav Links */}
@@ -203,8 +203,8 @@ function App() {
                   <>
                     <span className="text-brand-yellow font-bold tracking-wider text-xs md:text-sm uppercase block font-sans">
                     </span>
-                    <h1 className="text-slate-950 font-serif text-4xl md:text-6xl font-bold leading-[1.1] md:leading-[1.15]">
-                      Xin chào, mình là Bích Trâm
+                    <h1 className="text-slate-950 font-serif text-4xl md:text-6xl font-bold leading-[1.2] md:leading-[1.25]">
+                      Xin chào, mình là <span className="font-cursive text-brand-yellow font-normal text-5xl md:text-7xl block sm:inline-block pt-2 sm:pt-0 align-middle">Bích Trâm</span>
                     </h1>
                     <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-md font-sans">
                       Một vài dòng giới thiệu ngắn về bản thân, công việc hoặc định hướng sự nghiệp của bạn. Bạn có thể cập nhật thêm thông tin chi tiết ở trang giới thiệu.
@@ -250,8 +250,8 @@ function App() {
                     <span className="text-brand-yellow font-bold tracking-wider text-xs md:text-sm uppercase block font-sans">
                       Tìm hiểu về mình
                     </span>
-                    <h1 className="text-slate-950 font-serif text-4xl md:text-5xl font-bold leading-tight">
-                      Về Bích Trâm
+                    <h1 className="text-slate-950 font-serif text-4xl md:text-5xl font-bold leading-[1.2] md:leading-snug">
+                      Về <span className="font-cursive text-brand-yellow font-normal text-5xl md:text-6xl pl-1 inline-block align-middle">Bích Trâm</span>
                     </h1>
                     <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed font-sans">
                       <p>
