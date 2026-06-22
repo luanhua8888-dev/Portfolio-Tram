@@ -188,7 +188,9 @@ const FallingFlowers = () => {
               animationDuration: `${flower.swayDuration}s`,
             }}
           >
-            {renderShape(flower.type)}
+            <div className="falling-flower-interactive">
+              {renderShape(flower.type)}
+            </div>
           </div>
         </div>
       ))}
