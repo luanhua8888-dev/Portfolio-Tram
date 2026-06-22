@@ -41,19 +41,56 @@ const FallingFlowers = () => {
 
   React.useEffect(() => {
     // Generate 30 random flowers with different sizes, types, positions, durations, delays
-    const initialFlowers = Array.from({ length: 30 }).map((_, i) => ({
+    const initialFlowers = Array.from({ length: 35 }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
       size: Math.random() * 18 + 12, // 12px to 30px
       delay: Math.random() * -15, // Starts immediately distributed
       duration: Math.random() * 8 + 6, // 6s to 14s
-      type: i % 3 === 0 ? 'daisy' : i % 3 === 1 ? 'petal' : 'sakura',
+      type: i % 5 === 0 ? 'frog' : (i % 5 === 1 ? 'daisy' : (i % 5 === 2 ? 'petal' : 'sakura')),
       swayDuration: Math.random() * 3 + 2, // 2s to 5s
     }))
     setFlowers(initialFlowers)
   }, [])
 
   const renderShape = (type) => {
+    if (type === 'frog') {
+      return (
+        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.12)]">
+          {/* Frog Head Green Base */}
+          <path 
+            d="M 15,55 
+               C 10,40, 25,25, 40,32 
+               C 45,28, 55,28, 60,32 
+               C 75,25, 90,40, 85,55 
+               C 80,78, 20,78, 15,55 Z" 
+            fill="#8FBE77" 
+          />
+          {/* Pink Blushing Cheeks */}
+          <ellipse cx="24" cy="50" rx="7" ry="3" fill="#F4A2A2" opacity="0.85" />
+          <ellipse cx="76" cy="50" rx="7" ry="3" fill="#F4A2A2" opacity="0.85" />
+          
+          {/* Eyes */}
+          <circle cx="35" cy="40" r="4.5" fill="#111111" />
+          <circle cx="36.5" cy="38.5" r="1.5" fill="#FFFFFF" />
+          <circle cx="65" cy="40" r="4.5" fill="#111111" />
+          <circle cx="66.5" cy="38.5" r="1.5" fill="#FFFFFF" />
+          
+          {/* Nostrils */}
+          <circle cx="47" cy="44" r="1" fill="#222" />
+          <circle cx="53" cy="44" r="1" fill="#222" />
+          
+          {/* Mouth */}
+          <path 
+            d="M 36,52 C 45,56 55,56 64,52" 
+            stroke="#222" 
+            strokeWidth="2.5" 
+            strokeLinecap="round" 
+            fill="none" 
+          />
+        </svg>
+      )
+    }
     if (type === 'daisy') {
       return (
         <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
