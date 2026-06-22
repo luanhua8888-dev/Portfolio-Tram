@@ -6,8 +6,35 @@ import slide1 from './assets/slide1.png'
 import slide2 from './assets/slide2.png'
 import slide3 from './assets/slide3.png'
 import slide4 from './assets/slide4.png'
+import ig1 from './assets/ig_1.png'
+import ig2 from './assets/ig_2.png'
+import ig3 from './assets/ig_3.png'
+import ig4 from './assets/ig_4.png'
+import ig5 from './assets/ig_5.png'
+import ig6 from './assets/ig_6.png'
+import ig7 from './assets/ig_7.png'
+import ig8 from './assets/ig_8.png'
+import ig9 from './assets/ig_9.png'
+import ig10 from './assets/ig_10.png'
+import ig11 from './assets/ig_11.png'
+import ig12 from './assets/ig_12.png'
 
 const slides = [slide1, slide2, slide3, slide4]
+
+const igGallery = [
+  { img: ig1, link: "https://www.instagram.com/chuttoii/p/DZAXvqkFB1J6-TrkPm4l4YXcutVPP18KcYtK2c0/" },
+  { img: ig2, link: "https://www.instagram.com/chuttoii/p/DYzZ9fXlC_W_0wdbgNE-62a-7eVQmLH4P9qgQI0/" },
+  { img: ig3, link: "https://www.instagram.com/chuttoii/p/DYWSzKrFAAufMVxGUhga2KjgSkrH1apdeP5Bkk0/" },
+  { img: ig4, link: "https://www.instagram.com/chuttoii/p/DW1nN0nlG2OHZpOZpGjRCrAdU3YasgFHtOQgHI0/" },
+  { img: ig5, link: "https://www.instagram.com/chuttoii/p/DWjNdquFFw0S1mphl28WDsArzhsRkFMQ2mO5aU0/" },
+  { img: ig6, link: "https://www.instagram.com/chuttoii/p/DWYFLVolGp8_3EzzyxBT6do_xKc1ITtfNuEO-w0/" },
+  { img: ig7, link: "https://www.instagram.com/chuttoii/p/DVnzqvfFCYohf_j3u09eQHDfXrymXkfPxW3Re80/" },
+  { img: ig8, link: "https://www.instagram.com/chuttoii/p/DU-76fagYwfQTIMsXVruRjfVoOk3T2q_hCJ4DU0/" },
+  { img: ig9, link: "https://www.instagram.com/chuttoii/p/DT70L0XlJBGJlKa6q1Qs4TjPZnVvOJigCxy3Kg0/" },
+  { img: ig10, link: "https://www.instagram.com/chuttoii/p/DT0QElIAbaT7s1BZs1w-zvOJpapLkQlBzxojv00/" },
+  { img: ig11, link: "https://www.instagram.com/chuttoii/p/DS-QnyugZbKExhutXGAKPQWYT1HWpg9KsNOT_M0/" },
+  { img: ig12, link: "https://www.instagram.com/chuttoii/p/DSsSVblgQjaECwuOIT197FG0f9UIufGO_iXQjI0/" }
+]
 
 function App() {
   const [activeTab, setActiveTab] = useState('home')
@@ -310,6 +337,47 @@ function App() {
                             </motion.div>
                           </div>
                           <p className="text-slate-500 text-xs md:text-sm mt-1 leading-snug">{project.desc}</p>
+                        </motion.a>
+                      ))}
+                    </div>
+
+                    {/* Instagram Grid Divider & Header */}
+                    <div className="pt-4 flex items-center justify-between border-t border-slate-100/60 mt-4">
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-wider font-sans">Bài viết Instagram</span>
+                      <a 
+                        href="https://www.instagram.com/chuttoii/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-xs text-brand-yellow hover:text-brand-yellow-hover font-bold flex items-center gap-1 transition-colors"
+                      >
+                        @chuttoii <ExternalLink size={12} />
+                      </a>
+                    </div>
+                    
+                    {/* 4x3 Grid Gallery */}
+                    <div className="grid grid-cols-4 gap-2 pt-2 pb-1">
+                      {igGallery.map((item, idx) => (
+                        <motion.a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          key={idx}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: idx * 0.04 }}
+                          whileHover={{ scale: 1.05, y: -2 }}
+                          className="relative rounded-xl overflow-hidden aspect-square border border-slate-100/50 shadow-sm block cursor-pointer group"
+                        >
+                          <img 
+                            src={item.img} 
+                            alt={`Instagram Post ${idx + 1}`} 
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                            loading="lazy"
+                            draggable="false"
+                          />
+                          <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                            <Instagram size={16} />
+                          </div>
                         </motion.a>
                       ))}
                     </div>
