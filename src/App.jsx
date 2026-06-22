@@ -7,23 +7,23 @@ import slide2 from './assets/slide2.png'
 import slide3 from './assets/slide3.png'
 import slide4 from './assets/slide4.png'
 
+const slides = [slide1, slide2, slide3, slide4]
+
 function App() {
   const [activeTab, setActiveTab] = useState('home')
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  const slides = [slide1, slide2, slide3, slide4]
-
   useEffect(() => {
     let timer
     if (activeTab === 'contacts') {
       timer = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % slides.length)
-      }, 4000)
+      }, 3000)
     }
     return () => clearInterval(timer)
-  }, [activeTab, slides.length])
+  }, [activeTab])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -119,17 +119,17 @@ function App() {
         </div>
 
         {/* Navigation Header */}
-        <header className="absolute top-0 left-0 right-0 z-30 px-8 py-6 md:px-12 md:py-8 flex justify-between items-center w-full">
+        <header className="absolute top-0 left-0 right-0 z-30 px-4 sm:px-8 py-4 md:px-12 md:py-8 flex justify-between items-center w-full">
           {/* Logo / Name */}
           <button 
             onClick={() => changeTab('home')}
-            className="text-slate-900 font-bold text-xl md:text-2xl hover:opacity-80 transition-opacity cursor-pointer font-sans"
+            className="text-slate-900 font-bold text-base sm:text-xl md:text-2xl hover:opacity-80 transition-opacity cursor-pointer font-sans whitespace-nowrap flex-shrink-0"
           >
             Bích Trâm
           </button>
 
           {/* Nav Links */}
-          <nav className="flex space-x-6 md:space-x-10 text-sm md:text-base font-semibold">
+          <nav className="flex space-x-3 sm:space-x-6 md:space-x-10 text-xs sm:text-sm md:text-base font-semibold">
             {['about', 'projects', 'contacts'].map((tab) => {
               const isActive = activeTab === tab
               const labels = {
@@ -142,14 +142,14 @@ function App() {
                   key={tab}
                   onClick={() => changeTab(tab)}
                   className={`relative py-1 cursor-pointer transition-colors duration-300 ${
-                    isActive ? 'text-slate-900' : 'text-slate-700/80 hover:text-slate-900'
+                    isActive ? 'text-slate-900 md:text-white font-bold' : 'text-slate-700/80 md:text-white/85 hover:text-slate-900 md:hover:text-white'
                   }`}
                 >
                   {labels[tab]}
                   {isActive && (
                     <motion.div 
                       layoutId="activeUnderline"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-slate-900 rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-slate-900 md:bg-white rounded-full"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -160,7 +160,7 @@ function App() {
         </header>
 
         {/* Left Column: Dynamic Content Area (White background) */}
-        <div className="w-full md:w-[54%] bg-[#FAFAFA] md:bg-transparent z-20 flex flex-col justify-center px-6 py-24 md:px-16 md:py-20 text-left min-h-[420px] md:min-h-0">
+        <div className="w-full md:w-[54%] bg-[#FAFAFA] md:bg-transparent z-20 flex flex-col justify-center px-4 sm:px-8 pt-20 pb-6 md:px-16 md:py-20 text-left min-h-[420px] md:min-h-0">
           <div className="w-full max-w-lg">
             <AnimatePresence mode="wait" custom={getDirection(activeTab)}>
               <motion.div
@@ -437,7 +437,7 @@ function App() {
         </div>
 
         {/* Right Column: Visual Section (Yellow background) */}
-        <div className="w-full md:w-[46%] bg-brand-yellow md:bg-transparent z-20 flex flex-col justify-end items-center relative overflow-hidden min-h-[350px] md:min-h-0">
+        <div className={`w-full md:w-[46%] bg-brand-yellow md:bg-transparent z-20 flex flex-col justify-end items-center relative overflow-hidden min-h-[350px] md:min-h-0 ${activeTab === 'home' ? 'flex' : 'hidden md:flex'}`}>
           {/* Decorative floating elements */}
           <motion.div
             animate={{ 
