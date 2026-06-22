@@ -41,19 +41,53 @@ const FallingFlowers = () => {
 
   React.useEffect(() => {
     // Generate 30 random flowers with different sizes, types, positions, durations, delays
-    const initialFlowers = Array.from({ length: 35 }).map((_, i) => ({
+    const initialFlowers = Array.from({ length: 40 }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
       size: Math.random() * 18 + 12, // 12px to 30px
       delay: Math.random() * -15, // Starts immediately distributed
       duration: Math.random() * 8 + 6, // 6s to 14s
-      type: i % 5 === 0 ? 'frog' : (i % 5 === 1 ? 'daisy' : (i % 5 === 2 ? 'petal' : 'sakura')),
+      type: i % 6 === 0 ? 'frog' : (i % 6 === 1 ? 'cat' : (i % 6 === 2 ? 'daisy' : (i % 6 === 3 ? 'petal' : 'sakura'))),
       swayDuration: Math.random() * 3 + 2, // 2s to 5s
     }))
     setFlowers(initialFlowers)
   }, [])
 
   const renderShape = (type) => {
+    if (type === 'cat') {
+      return (
+        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.12)]">
+          {/* Ears */}
+          <path d="M 22,35 L 12,20 L 32,25 Z" fill="#FDF2DB" />
+          <path d="M 22,35 L 14,22 L 28,26 Z" fill="#F3D1C9" />
+          
+          <path d="M 78,35 L 88,20 L 68,25 Z" fill="#FDF2DB" />
+          <path d="M 78,35 L 86,22 L 72,26 Z" fill="#F3D1C9" />
+          
+          {/* Cat Head Base */}
+          <ellipse cx="50" cy="50" rx="36" ry="28" fill="#FDF2DB" />
+          
+          {/* Closed/Squinting Eyes */}
+          <path d="M 25,41 Q 31,37 37,42" stroke="#5C4033" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          <path d="M 63,41 Q 69,37 75,42" stroke="#5C4033" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          
+          {/* Yawning Mouth */}
+          <path d="M 44,45 C 40,55, 42,72, 50,72 C 58,72, 60,55, 56,45 Z" fill="#3D1D13" />
+          
+          {/* Pink Tongue */}
+          <path d="M 46,62 C 46,70, 54,70, 54,62 C 54,58, 46,58, 46,62 Z" fill="#F3A3A3" />
+          
+          {/* Nose */}
+          <polygon points="48,43 52,43 50,45" fill="#F3A3A3" />
+          
+          {/* Whiskers */}
+          <path d="M 22,50 L 10,49" stroke="#E5D3B3" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M 22,55 L 8,56" stroke="#E5D3B3" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M 78,50 L 90,49" stroke="#E5D3B3" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M 78,55 L 92,56" stroke="#E5D3B3" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+      )
+    }
     if (type === 'frog') {
       return (
         <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.12)]">
