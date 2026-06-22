@@ -572,7 +572,7 @@ function App() {
           }}
           className="absolute bottom-1.5 z-40 pointer-events-none"
         >
-          <svg viewBox="0 0 48 30" className="w-12 h-8 text-slate-800 fill-current drop-shadow-sm">
+          <svg viewBox="0 0 48 30" className="w-20 h-14 text-slate-800 fill-current drop-shadow-md">
             {/* Tail */}
             <path d="M34,14 C38,7 37,2 35,2 C33,2 33,6 35,9 L33,14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" fill="none" className="cat-tail" />
             {/* Body */}
