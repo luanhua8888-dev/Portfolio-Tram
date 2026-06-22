@@ -115,15 +115,20 @@ function App() {
           <nav className="flex space-x-6 md:space-x-10 text-sm md:text-base font-semibold">
             {['about', 'projects', 'contacts'].map((tab) => {
               const isActive = activeTab === tab
+              const labels = {
+                about: 'Giới thiệu',
+                projects: 'Mạng xã hội',
+                contacts: 'Liên hệ'
+              }
               return (
                 <button
                   key={tab}
                   onClick={() => changeTab(tab)}
-                  className={`relative py-1 capitalize cursor-pointer transition-colors duration-300 ${
+                  className={`relative py-1 cursor-pointer transition-colors duration-300 ${
                     isActive ? 'text-slate-900' : 'text-slate-700/80 hover:text-slate-900'
                   }`}
                 >
-                  {tab === 'projects' ? 'Socials' : tab}
+                  {labels[tab]}
                   {isActive && (
                     <motion.div 
                       layoutId="activeUnderline"
@@ -156,10 +161,10 @@ function App() {
                       UI/UX Designer
                     </span>
                     <h1 className="text-slate-950 font-serif text-4xl md:text-6xl font-bold leading-[1.1] md:leading-[1.15]">
-                      Hello, Bích Trâm
+                      Xin chào, mình là Bích Trâm
                     </h1>
-                    <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-md">
-                      Short text with details about you, what you do or your professional career. You can add more information on the about page.
+                    <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-md font-sans">
+                      Một vài dòng giới thiệu ngắn về bản thân, công việc hoặc định hướng sự nghiệp của bạn. Bạn có thể cập nhật thêm thông tin chi tiết ở trang giới thiệu.
                     </p>
                     <div className="flex flex-wrap gap-3 pt-2">
                       <motion.button
@@ -168,7 +173,7 @@ function App() {
                         onClick={() => changeTab('projects')}
                         className="bg-brand-yellow hover:bg-brand-yellow-hover text-slate-950 font-bold px-6 py-3 rounded-xl shadow-[0_4px_14px_rgba(244,180,26,0.3)] transition-colors flex items-center gap-2 cursor-pointer text-sm md:text-base"
                       >
-                        Socials
+                        Liên kết
                         <ArrowRight size={18} />
                       </motion.button>
                       <motion.a
@@ -200,22 +205,22 @@ function App() {
                 {activeTab === 'about' && (
                   <>
                     <span className="text-brand-yellow font-bold tracking-wider text-xs md:text-sm uppercase block font-sans">
-                      Get to know me
+                      Tìm hiểu về mình
                     </span>
                     <h1 className="text-slate-950 font-serif text-4xl md:text-5xl font-bold leading-tight">
-                      About Bích Trâm
+                      Về Bích Trâm
                     </h1>
-                    <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
+                    <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed font-sans">
                       <p>
-                        I am a passionate UI/UX Designer based in San Francisco. I specialize in creating beautiful, user-centered digital experiences that blend aesthetic appeal with functional simplicity.
+                        Mình là một nhà thiết kế UI/UX đầy nhiệt huyết. Mình chuyên tạo ra các trải nghiệm kỹ thuật số đẹp mắt, tập trung vào người dùng, kết hợp hài hòa giữa tính thẩm mỹ và sự tối giản, tiện dụng.
                       </p>
                       <p>
-                        Over the past 5 years, I have worked with startups and brands to design mobile apps, web applications, and interactive websites. I believe that great design is not just how it looks, but how it works.
+                        Trong những năm qua, mình đã làm việc cùng các đối tác và thương hiệu để thiết kế ứng dụng di động, trang web và các sản phẩm tương tác. Mình tin rằng một thiết kế tuyệt vời không chỉ nằm ở vẻ bề ngoài mà còn ở cách nó vận hành.
                       </p>
                     </div>
                     
                     <div className="pt-2">
-                      <h3 className="text-slate-800 font-bold text-sm md:text-base mb-3 font-sans">My Core Skills:</h3>
+                      <h3 className="text-slate-800 font-bold text-sm md:text-base mb-3 font-sans">Kỹ năng chính:</h3>
                       <div className="flex flex-wrap gap-2">
                         {['UI/UX Design', 'Framer Motion', 'Figma', 'React', 'Tailwind CSS', 'Prototyping', 'User Research'].map((skill, i) => (
                           <motion.span
@@ -237,25 +242,25 @@ function App() {
                 {activeTab === 'projects' && (
                   <>
                     <span className="text-brand-yellow font-bold tracking-wider text-xs md:text-sm uppercase block font-sans">
-                      Social Channels
+                      Kênh liên kết
                     </span>
                     <h1 className="text-slate-950 font-serif text-4xl md:text-5xl font-bold leading-tight">
-                      My Networks
+                      Mạng lưới xã hội
                     </h1>
                     
                     <div className="space-y-3 pt-2">
                       {[
                         { 
-                          title: 'Facebook Profile', 
+                          title: 'Trang cá nhân Facebook', 
                           category: 'Facebook', 
-                          desc: 'Connect with me on Facebook to see my daily life and updates.',
+                          desc: 'Kết nối với mình qua Facebook để theo dõi cuộc sống thường nhật và công việc.',
                           link: 'https://www.facebook.com/bich.tram.388670',
                           icon: 'facebook'
                         },
                         { 
-                          title: 'Instagram Profile', 
+                          title: 'Trang cá nhân Instagram', 
                           category: 'Instagram', 
-                          desc: 'Follow my photography, stories, and visual design inspirations.',
+                          desc: 'Theo dõi Instagram của mình để xem những khoảnh khắc đời thường và cảm hứng thiết kế.',
                           link: 'https://www.instagram.com/chuttoii/?hl=en',
                           icon: 'instagram'
                         }
@@ -297,10 +302,10 @@ function App() {
                 {activeTab === 'contacts' && (
                   <>
                     <span className="text-brand-yellow font-bold tracking-wider text-xs md:text-sm uppercase block font-sans">
-                      Let's Connect
+                      Kết nối
                     </span>
                     <h1 className="text-slate-950 font-serif text-4xl md:text-5xl font-bold leading-tight">
-                      Get in Touch
+                      Gửi lời nhắn
                     </h1>
                     
                     {formSubmitted ? (
@@ -310,8 +315,8 @@ function App() {
                         className="flex flex-col items-center justify-center p-6 bg-green-50 rounded-2xl border border-green-200 text-center space-y-3"
                       >
                         <CheckCircle2 className="text-green-500 w-12 h-12" />
-                        <h3 className="text-green-800 font-bold text-lg font-sans">Thank you!</h3>
-                        <p className="text-green-600 text-sm">Your message has been sent successfully. Bích Trâm will get back to you soon.</p>
+                        <h3 className="text-green-800 font-bold text-lg font-sans">Cảm ơn bạn!</h3>
+                        <p className="text-green-600 text-sm">Tin nhắn của bạn đã được gửi thành công. Bích Trâm sẽ phản hồi lại bạn sớm nhé.</p>
                       </motion.div>
                     ) : (
                       <form onSubmit={handleSubmit} className="space-y-3 pt-1">
@@ -320,7 +325,7 @@ function App() {
                             type="text" 
                             name="name"
                             required
-                            placeholder="Your Name"
+                            placeholder="Tên của bạn"
                             value={formData.name}
                             onChange={handleInputChange}
                             className="bg-white border border-slate-200 focus:border-brand-yellow rounded-xl px-4 py-2.5 text-sm outline-none transition-colors w-full text-slate-800 font-sans"
@@ -329,7 +334,7 @@ function App() {
                             type="email" 
                             name="email"
                             required
-                            placeholder="Your Email"
+                            placeholder="Email của bạn"
                             value={formData.email}
                             onChange={handleInputChange}
                             className="bg-white border border-slate-200 focus:border-brand-yellow rounded-xl px-4 py-2.5 text-sm outline-none transition-colors w-full text-slate-800 font-sans"
@@ -339,7 +344,7 @@ function App() {
                           name="message"
                           required
                           rows="3"
-                          placeholder="Your Message"
+                          placeholder="Lời nhắn của bạn"
                           value={formData.message}
                           onChange={handleInputChange}
                           className="bg-white border border-slate-200 focus:border-brand-yellow rounded-xl px-4 py-2.5 text-sm outline-none transition-colors w-full resize-none text-slate-800 font-sans"
@@ -350,7 +355,7 @@ function App() {
                           type="submit"
                           className="w-full bg-brand-yellow hover:bg-brand-yellow-hover text-slate-950 font-bold py-2.5 rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer text-sm"
                         >
-                          Send Message
+                          Gửi tin nhắn
                           <Send size={16} />
                         </motion.button>
                       </form>
