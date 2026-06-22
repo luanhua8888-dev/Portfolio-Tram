@@ -292,19 +292,19 @@ function App() {
                       Mạng lưới xã hội
                     </h1>
                     
-                    <div className="space-y-3 pt-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                       {[
                         { 
-                          title: 'Trang cá nhân Facebook', 
+                          title: 'Trang Facebook', 
                           category: 'Facebook', 
-                          desc: 'Kết nối với mình qua Facebook để theo dõi cuộc sống thường nhật và công việc.',
+                          desc: 'Theo dõi cuộc sống thường nhật và công việc.',
                           link: 'https://www.facebook.com/bich.tram.388670',
                           icon: 'facebook'
                         },
                         { 
-                          title: 'Trang cá nhân Instagram', 
+                          title: 'Trang Instagram', 
                           category: 'Instagram', 
-                          desc: 'Theo dõi Instagram của mình để xem những khoảnh khắc đời thường và cảm hứng thiết kế.',
+                          desc: 'Xem những khoảnh khắc đời thường & nghệ thuật.',
                           link: 'https://www.instagram.com/chuttoii/?hl=en',
                           icon: 'instagram'
                         }
@@ -314,36 +314,36 @@ function App() {
                           target="_blank"
                           rel="noopener noreferrer"
                           key={project.title}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: i * 0.1 }}
-                          whileHover={{ x: 6 }}
-                          className="group flex flex-col justify-start p-3 rounded-xl border border-transparent hover:border-slate-100 hover:bg-white hover:shadow-sm transition-all duration-300 cursor-pointer block"
+                          whileHover={{ y: -3, scale: 1.01 }}
+                          className="group flex flex-col justify-between p-4 rounded-2xl border border-slate-100/80 bg-white/50 hover:bg-white hover:shadow-md hover:border-white transition-all duration-300 cursor-pointer block"
                         >
-                          <div className="flex justify-between items-center">
-                            <div>
+                          <div>
+                            <div className="flex justify-between items-center mb-1">
                               <span className="text-brand-yellow text-xs font-bold uppercase tracking-wider">{project.category}</span>
-                              <h3 className="text-slate-900 font-bold text-base md:text-lg group-hover:text-brand-yellow transition-colors font-sans">{project.title}</h3>
+                              <motion.div 
+                                whileHover={{ scale: 1.1 }}
+                                className="text-slate-400 group-hover:text-slate-900 transition-colors"
+                              >
+                                {project.icon === 'facebook' ? (
+                                  <Facebook size={18} />
+                                ) : (
+                                  <Instagram size={18} />
+                                )}
+                              </motion.div>
                             </div>
-                            <motion.div 
-                              whileHover={{ scale: 1.2 }}
-                              className="text-slate-400 group-hover:text-slate-900 transition-colors p-1"
-                            >
-                              {project.icon === 'facebook' ? (
-                                <Facebook size={18} />
-                              ) : (
-                                <Instagram size={18} />
-                              )}
-                            </motion.div>
+                            <h3 className="text-slate-900 font-bold text-base group-hover:text-brand-yellow transition-colors font-sans">{project.title}</h3>
+                            <p className="text-slate-500 text-xs mt-1 leading-normal">{project.desc}</p>
                           </div>
-                          <p className="text-slate-500 text-xs md:text-sm mt-1 leading-snug">{project.desc}</p>
                         </motion.a>
                       ))}
                     </div>
 
                     {/* Instagram Grid Divider & Header */}
-                    <div className="pt-4 flex items-center justify-between border-t border-slate-100/60 mt-4">
-                      <span className="text-xs font-bold text-slate-400 uppercase tracking-wider font-sans">Bài viết Instagram</span>
+                    <div className="pt-5 flex items-center justify-between border-t border-slate-200/50 mt-5">
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-wider font-sans">Bộ sưu tập Instagram</span>
                       <a 
                         href="https://www.instagram.com/chuttoii/" 
                         target="_blank" 
@@ -354,8 +354,8 @@ function App() {
                       </a>
                     </div>
                     
-                    {/* 4x3 Grid Gallery */}
-                    <div className="grid grid-cols-4 gap-2 pt-2 pb-1">
+                    {/* 3x4 Grid Gallery */}
+                    <div className="grid grid-cols-3 gap-3 pt-3 pb-1">
                       {igGallery.map((item, idx) => (
                         <motion.a
                           href={item.link}
@@ -364,19 +364,22 @@ function App() {
                           key={idx}
                           initial={{ opacity: 0, scale: 0.9 }}
                           animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: idx * 0.04 }}
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          className="relative rounded-xl overflow-hidden aspect-square border border-slate-100/50 shadow-sm block cursor-pointer group"
+                          transition={{ delay: idx * 0.03 }}
+                          whileHover={{ scale: 1.04, y: -2 }}
+                          className="relative rounded-2xl overflow-hidden aspect-square border border-slate-100/80 shadow-sm hover:shadow-md block cursor-pointer group"
                         >
                           <img 
                             src={item.img} 
                             alt={`Instagram Post ${idx + 1}`} 
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
                             loading="lazy"
                             draggable="false"
                           />
-                          <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
-                            <Instagram size={16} />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 text-white">
+                            <div className="flex items-center gap-1.5 text-xs font-semibold">
+                              <Instagram size={14} className="text-brand-yellow" />
+                              <span>Xem ảnh</span>
+                            </div>
                           </div>
                         </motion.a>
                       ))}
