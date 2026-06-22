@@ -556,20 +556,10 @@ function App() {
           </motion.div>
         </div>
 
-        {/* Walking Black Cat */}
-        <motion.div
-          initial={{ x: '-15%', scaleX: -1 }}
-          animate={{
-            x: ['-15%', '115%', '115%', '-15%', '-15%'],
-            scaleX: [-1, -1, 1, 1, -1]
-          }}
-          transition={{
-            duration: 22,
-            repeat: Infinity,
-            ease: "linear",
-            times: [0, 0.47, 0.5, 0.97, 1]
-          }}
-          className="absolute bottom-2 z-40 pointer-events-none"
+        {/* Decorative Black Cat (Static in corner) */}
+        <div
+          style={{ transform: 'scaleX(-1)' }}
+          className="absolute bottom-2 left-6 z-40 pointer-events-none"
         >
           <article className="cute-cat" role="img" aria-labelledby="alt">
             <div id="alt">Cartoon of a black cat drawn in cute/kawaii style</div>
@@ -593,7 +583,7 @@ function App() {
               <div className="nose"></div>
             </div>
           </article>
-        </motion.div>
+        </div>
       </motion.div>
     </div>
   )

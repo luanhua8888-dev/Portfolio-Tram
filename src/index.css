@@ -228,11 +228,9 @@ body {
 
 .cute-cat .body .paw:nth-child(3) {
   transform-origin: 50% 20%;
-  animation: cute-cat-walk-1 0.4s infinite ease-in-out;
 }
 .cute-cat .body .paw:nth-child(4) {
   transform-origin: 50% 20%;
-  animation: cute-cat-walk-2 0.4s infinite ease-in-out;
 }
 .cute-cat .tail {
   transform-origin: 10% 90%;
