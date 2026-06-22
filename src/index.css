@@ -248,3 +248,49 @@ body {
 .cute-cat .head {
   animation: cute-cat-head-bob 0.8s infinite ease-in-out;
 }
+
+/* Falling Flower Animations */
+@keyframes flower-fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(105vh) rotate(360deg);
+  }
+}
+
+@keyframes flower-sway {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(30px);
+  }
+}
+
+.falling-flower-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.falling-flower {
+  position: absolute;
+  top: -50px;
+  animation-name: flower-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.falling-flower-inner {
+  width: 100%;
+  height: 100%;
+  animation-name: flower-sway;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}

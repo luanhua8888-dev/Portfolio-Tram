@@ -36,6 +36,95 @@ const igGallery = [
   { img: ig12, link: "https://www.instagram.com/chuttoii/p/DSsSVblgQjaECwuOIT197FG0f9UIufGO_iXQjI0/" }
 ]
 
+const FallingFlowers = () => {
+  const [flowers, setFlowers] = React.useState([])
+
+  React.useEffect(() => {
+    // Generate 30 random flowers with different sizes, types, positions, durations, delays
+    const initialFlowers = Array.from({ length: 30 }).map((_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      size: Math.random() * 18 + 12, // 12px to 30px
+      delay: Math.random() * -15, // Starts immediately distributed
+      duration: Math.random() * 8 + 6, // 6s to 14s
+      type: i % 3 === 0 ? 'daisy' : i % 3 === 1 ? 'petal' : 'sakura',
+      swayDuration: Math.random() * 3 + 2, // 2s to 5s
+    }))
+    setFlowers(initialFlowers)
+  }, [])
+
+  const renderShape = (type) => {
+    if (type === 'daisy') {
+      return (
+        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
+          <g fill="#FFFFFF">
+            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(0 50 50)" />
+            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(30 50 50)" />
+            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(60 50 50)" />
+            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(90 50 50)" />
+            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(120 50 50)" />
+            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(150 50 50)" />
+            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(180 50 50)" />
+            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(210 50 50)" />
+            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(240 50 50)" />
+            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(270 50 50)" />
+            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(300 50 50)" />
+            <ellipse cx="50" cy="20" rx="7" ry="20" transform="rotate(330 50 50)" />
+          </g>
+          <circle cx="50" cy="50" r="15" fill="#F4B41A" />
+        </svg>
+      )
+    }
+    if (type === 'petal') {
+      return (
+        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_1px_2px_rgba(0,0,0,0.1)]">
+          <path d="M50,15 C65,30 65,65 50,85 C35,65 35,30 50,15 Z" fill="#FFFFFF" opacity="0.95" />
+        </svg>
+      )
+    }
+    // Sakura (pink cherry blossom)
+    return (
+      <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
+        <g fill="#FBCFE8">
+          <circle cx="50" cy="32" r="14" />
+          <circle cx="68" cy="45" r="14" />
+          <circle cx="61" cy="68" r="14" />
+          <circle cx="39" cy="68" r="14" />
+          <circle cx="32" cy="45" r="14" />
+        </g>
+        <circle cx="50" cy="50" r="10" fill="#FDE047" />
+      </svg>
+    )
+  }
+
+  return (
+    <div className="falling-flower-container">
+      {flowers.map((flower) => (
+        <div
+          key={flower.id}
+          className="falling-flower"
+          style={{
+            left: `${flower.x}%`,
+            width: `${flower.size}px`,
+            height: `${flower.size}px`,
+            animationDelay: `${flower.delay}s`,
+            animationDuration: `${flower.duration}s`,
+          }}
+        >
+          <div
+            className="falling-flower-inner"
+            style={{
+              animationDuration: `${flower.swayDuration}s`,
+            }}
+          >
+            {renderShape(flower.type)}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function App() {
   const [activeTab, setActiveTab] = useState('home')
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -119,6 +208,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-brand-yellow flex items-center justify-center p-4 md:p-8 font-sans selection:bg-brand-yellow/30">
+      <FallingFlowers />
       <motion.div 
         initial="hidden"
         animate="visible"
