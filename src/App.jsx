@@ -379,7 +379,7 @@ function App() {
                     )}
 
                     {/* Slideshow Gallery */}
-                    <div className="relative mt-5 rounded-2xl overflow-hidden aspect-[16/10] shadow-sm border border-slate-100/50 group h-40 sm:h-48">
+                    <div className="relative mt-5 rounded-2xl overflow-hidden aspect-[16/10] shadow-sm border border-slate-100/50 group h-40 sm:h-48 mx-auto">
                       <AnimatePresence mode="wait">
                         <motion.img
                           key={currentSlide}
