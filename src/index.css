@@ -29,24 +29,22 @@ body {
 @keyframes cat-tail-wag {
   0%, 100% { transform: rotate(-8deg); }
   50% { transform: rotate(8deg); }
-}
-
-.cat-leg-1, .cat-leg-3 {
-  transform-origin: 16px 21px;
-  animation: cat-walk-cycle-1 0.4s infinite ease-in-out;
+}.cat-leg-1, .cat-leg-3 {
+  transform-origin: 20px 21px;
+  animation: cat-walk-cycle-1 0.45s infinite ease-in-out;
 }
 .cat-leg-2, .cat-leg-4 {
-  transform-origin: 20px 21px;
-  animation: cat-walk-cycle-2 0.4s infinite ease-in-out;
+  transform-origin: 23px 21px;
+  animation: cat-walk-cycle-2 0.45s infinite ease-in-out;
 }
 .cat-leg-3 {
-  transform-origin: 30px 21px;
+  transform-origin: 29px 21px;
 }
 .cat-leg-4 {
-  transform-origin: 34px 21px;
+  transform-origin: 32px 21px;
 }
 
 .cat-tail {
-  transform-origin: 38px 13px;
-  animation: cat-tail-wag 0.8s infinite ease-in-out;
+  transform-origin: 33px 14px;
+  animation: cat-tail-wag 0.9s infinite ease-in-out;
 }
